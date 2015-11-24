@@ -30,7 +30,7 @@ Ramd::define('error', function(error) {
     }))
     close(body)
     if (is(value, 'try-error')) {
-      return(error("Error during code execution: ", attr(value, 'condition')$message))
+      return(list(input = input, output = paste("<b>Error:</b>", attr(value, 'condition')$message)))
     }
     list(input = input, output = capture.output(value))
   }
