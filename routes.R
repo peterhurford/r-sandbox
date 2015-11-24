@@ -1,6 +1,11 @@
-routes <- Ramd::define('helpers/error', function(error) {
+index_page <- function(...) {
+  microserver::html("<form action='/process' method='post'>
+    <input type='text' name='body'><input type='submit'></form>")
+}
+
+routes <- Ramd::define("helpers/error", function(error) {
   list(
-  '/process' = Ramd::define('helpers/run_code', function(run_code) {
+  "/process" = Ramd::define("helpers/run_code", function(run_code) {
       force(run_code)
       function(params, query) {
         return(params)
@@ -12,6 +17,6 @@ routes <- Ramd::define('helpers/error', function(error) {
         run_code(params)
       }
     }),
-  '/ping' = function (p, q) { c("PONG") },
-  function(...) { "Nothing to see here." }
+  "/ping" = function (p, q) { c("PONG") },
+  index_page()
 )})
