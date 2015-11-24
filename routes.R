@@ -1,8 +1,3 @@
-index_page <- function(...) {
-  microserver::html("<form action='/process' method='post'>
-    <input type='text' name='body'><input type='submit'></form>")
-}
-
 routes <- Ramd::define("helpers/error", function(error) {
   list(
   "/process" = Ramd::define("helpers/run_code", function(run_code) {
@@ -17,5 +12,5 @@ routes <- Ramd::define("helpers/error", function(error) {
       }
     }),
   "/ping" = function (p, q) { c("PONG") },
-  index_page()
+  microserver::html_page("form.html")
 )})
