@@ -5,7 +5,14 @@ for demoing R software.
 
 The R sandbox was built by modifying robertzk's [R tutorial engine](https://github.com/robertzk/tutorial-engine), which is built ontop of robertzk's [microserver](http://github.com/robertzk/microserver), which is built ontop of RStudio's [httpuv](https://github.com/rstudio/httpuv), which is built ontop of Joyent's [libuv](https://github.com/libuv/libuv).  Isn't open source cool? 
 
+
 ## Example Usage
+
+#### Online REPL
+
+From R within this repo, run `source("engine.R")`.  Then browse `http://localhost:8102`.
+
+#### API
 
 From R within this repo, run `source("engine.R")`.  Then you can start sending arbitrary R commands using POST, like:
 
