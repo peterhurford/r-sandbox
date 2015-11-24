@@ -1,23 +1,7 @@
 <html>
   <head>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script>
-      $(function () {
-        $('form').on('submit', function (e) {
-          e.preventDefault();
-          $.ajax({
-            type: "post",
-            url: "/process",
-            data: $("form").serialize(),
-            success: function (data) {
-              data = JSON.parse(data);
-              $("#console").append("<br>" + "> " + data["input"] + "<br>" + data["output"] + "<br>");
-              $("#console").scrollTop($("#console")[0].scrollHeight);
-            }
-          });
-        });
-      });
-    </script>
+    <script src="js/console.js"></script>
   </head>
   <body>
     <form>

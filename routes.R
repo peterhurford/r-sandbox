@@ -12,5 +12,6 @@ routes <- Ramd::define("helpers/error", function(error) {
       }
     }),
   "/ping" = function (p, q) { c("PONG") },
+  "/js/console.js" = microserver::html_page("js/console.js"),
   microserver::html_page("form.html")
 )})
