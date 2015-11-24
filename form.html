@@ -12,6 +12,7 @@
             success: function (data) {
               data = JSON.parse(data);
               $("#console").append("<br>" + "> " + data["input"] + "<br>" + data["output"] + "<br>");
+              $("#console").scrollTop($("#console")[0].scrollHeight);
             }
           });
         });
@@ -20,7 +21,7 @@
   </head>
   <body>
     <form>
-      <div id="console"></div><br>
+      <div id="console" style="width: 300px; height: 400px; overflow-y: scroll;"></div><br>
       > <input type="text" name="body"><br>
     </form>
   </body>
