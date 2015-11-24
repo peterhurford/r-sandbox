@@ -20,6 +20,7 @@ Ramd::define('error', function(error) {
 
   provided_env <- getNamespace("base")
   execute_body <- function(body) {
+    input <- body
     body <- textConnection(body)
     # TODO: (RK) Better environment sequestering.
     value <- try(silent = TRUE, local({
@@ -31,13 +32,13 @@ Ramd::define('error', function(error) {
     if (is(value, 'try-error')) {
       return(error("Error during code execution: ", attr(value, 'condition')$message))
     }
-    capture.output(value)
+    list(input = input, output = capture.output(value))
   }
 
   run_code <- function(params) {
     check <- verify_body_legality(params$body)
     if (!isTRUE(check)) { return(check) }
-    execute_body(params$body)
+    microserver:::to_json(execute_body(params$body))
   }
 })
 
